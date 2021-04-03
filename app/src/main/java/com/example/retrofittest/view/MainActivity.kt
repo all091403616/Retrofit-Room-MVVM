@@ -1,5 +1,6 @@
 package com.example.retrofittest.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -36,7 +37,10 @@ class MainActivity : AppCompatActivity() {
                 it.onNavDestinationSelected(navController)
             }else{
                 binding.drawerLayout.closeDrawers()
-                Toast.makeText(this,"Share App",Toast.LENGTH_LONG).show()
+                startActivity(Intent(Intent.ACTION_SEND).apply {
+                    putExtra(Intent.EXTRA_TEXT,"Simple app for Retrofit,Room and MVVM\nhttps://github.com/all091403616/Retrofit-Room-MVVM")
+                    type="text/plain"
+                })
             }
             true
         }
