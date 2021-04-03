@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="16dp"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8dp">
+    <LinearLayout
+        android:padding="5dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            tools:src="@drawable/news"
+            android:scaleType="fitXY"
+            android:id="@+id/news_img"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            tools:text="title"
+            android:textColor="@color/text_color"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:id="@+id/news_title"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/text_color"
+            android:id="@+id/news_description"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/text_color"
+            android:layout_marginTop="5dp"
+            android:id="@+id/news_date" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="About Us"
+        android:icon="@drawable/ic_baseline_description_24"
+        android:id="@+id/aboutFragment"/>
+    <item
+        android:title="Share App"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:id="@+id/share_menu"/>
+</menu>

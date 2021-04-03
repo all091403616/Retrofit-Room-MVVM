@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.retrofittest.viewmodel.DetailsFragmentViewModel" />
+        <variable
+            name="view"
+            type="android.view.View" />
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                tools:src="@drawable/news"
+                android:id="@+id/img"
+                android:scaleType="fitXY"
+                android:visibility="@{viewModel.news!=null?view.VISIBLE:view.GONE}"
+                loadImage="@{viewModel.news.image}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@id/img"
+                android:layout_centerHorizontal="true"
+                tools:text="title"
+                android:textColor="@color/text_color"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@{viewModel.news.title}"
+                android:visibility="@{viewModel.news!=null?view.VISIBLE:view.GONE}"
+                android:id="@+id/txt"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt"
+                android:textSize="16sp"
+                android:textColor="@color/text_color"
+                android:text="@{viewModel.news.description}"
+                android:visibility="@{viewModel.news!=null?view.VISIBLE:view.GONE}"
+                android:layout_marginTop="5dp"
+                android:id="@+id/txt2"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/text_color"
+                android:text="@{@string/author_text(viewModel.news.author)}"
+                android:visibility="@{viewModel.news!=null?view.VISIBLE:view.GONE}"
+                android:layout_below="@id/txt2"
+                android:id="@+id/txt3"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/text_color"
+                android:layout_marginTop="5dp"
+                android:visibility="@{viewModel.news!=null?view.VISIBLE:view.GONE}"
+                android:layout_below="@id/txt3"
+                android:text="@{@string/date_text(viewModel.news.published.replace(` +0000`,``))}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nothing found!!!"
+                android:textStyle="bold"
+                android:textColor="@color/text_color"
+                android:layout_centerInParent="true"
+                android:visibility="@{viewModel.news==null?view.VISIBLE:view.GONE}"/>
+        </RelativeLayout>
+    </ScrollView>
+</layout>

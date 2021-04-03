@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.retrofittest.view.ListFragment"
+        android:label="ListFragment" >
+        <action
+            android:id="@+id/action_listFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_out"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.retrofittest.view.DetailsFragment"
+        android:label="DetailsFragment">
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <deepLink
+            android:id="@+id/deepLink"
+            android:autoVerify="true"
+            app:action="ACTION_SEND"
+            app:mimeType="text/html"
+            app:uri="https://retrofit.mvvm/{id}" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.retrofittest.view.AboutFragment"
+        android:label="AboutFragment" />
+</navigation>
