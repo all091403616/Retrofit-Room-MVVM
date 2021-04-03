@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                     type="text/plain"
                 })
             }
+
             true
         }
     }
