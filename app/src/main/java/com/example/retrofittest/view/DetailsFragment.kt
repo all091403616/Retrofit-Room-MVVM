@@ -18,7 +18,7 @@ class DetailsFragment:Fragment() {
     private val viewModel: DetailsFragmentViewModel by viewModels {
         DetailsViewModelFactory((requireActivity().application as NewsApp).repository)
     }
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding=NewsDetailsFragmentBinding.inflate(inflater,container,false)
         binding.viewModel=viewModel
         binding.lifecycleOwner=this
@@ -28,10 +28,9 @@ class DetailsFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var id:Long
+        val id:Long
         if (requireActivity().intent?.dataString!=null)
-            id=requireActivity().intent?.dataString?.substring(requireActivity().intent?.dataString?.lastIndexOf("/")?.plus(1)
-                    ?:0)?.toLong()!!
+            id=requireActivity().intent?.data?.getQueryParameter("id")?.toLongOrNull()?:0
         else {
             id=navArgs<DetailsFragmentArgs>().value.id
             setHasOptionsMenu(true)
@@ -55,7 +54,7 @@ class DetailsFragment:Fragment() {
                         findNavController().navigateUp()
                     }.show()
         }else if (item.itemId==R.id.share_news_menu){
-            var intent=Intent(Intent.ACTION_SEND).apply {
+            val intent=Intent(Intent.ACTION_SEND).apply {
                 putExtra(Intent.EXTRA_TEXT,"${(requireActivity().application as NewsApp).link}${viewModel.getId()}")
                 type="text/*"
             }

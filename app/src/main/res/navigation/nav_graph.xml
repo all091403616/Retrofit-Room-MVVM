@@ -27,7 +27,7 @@
             android:autoVerify="true"
             app:action="ACTION_SEND"
             app:mimeType="text/html"
-            app:uri="https://retrofit.mvvm/{id}" />
+            app:uri="https://retrofit.mvvm/?id={id}" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
