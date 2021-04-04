@@ -59,19 +59,10 @@ class ListFragment:Fragment() , SearchView.OnQueryTextListener{
             adapter.refresh(it as ArrayList<News>)
         })
 
-        viewModel.state.observe(this.viewLifecycleOwner,{
-            if (it==States.NETWORK) {
-                Toast.makeText(requireContext(), "Check your internet connection", Toast.LENGTH_LONG).apply {
-                    setGravity(Gravity.CENTER_VERTICAL, 0, 0)
-                    show()
-                }
-                viewModel.stateReceived()
-            }else if (it==States.ERROR) {
-                Toast.makeText(requireContext(), "Please try again later", Toast.LENGTH_LONG).apply {
-                    setGravity(Gravity.CENTER, 0, 0)
-                    show()
-                }
-                viewModel.stateReceived()
+        viewModel.message.observe(this.viewLifecycleOwner,{
+            if (it!=null){
+                Toast.makeText(requireContext(),it,Toast.LENGTH_LONG).show()
+                viewModel.messageReceived()
             }
         })
     }
@@ -80,7 +71,7 @@ class ListFragment:Fragment() , SearchView.OnQueryTextListener{
         inflater.inflate(R.menu.list_top_menu,menu)
         val searchView:SearchView=menu.findItem(R.id.search_menu).actionView as SearchView
         searchView.isSubmitButtonEnabled=false
-        searchView.queryHint="Search..."
+        searchView.queryHint=viewModel.getSearchHint()
         searchView.setOnQueryTextListener(this)
 
         super.onCreateOptionsMenu(menu, inflater)
