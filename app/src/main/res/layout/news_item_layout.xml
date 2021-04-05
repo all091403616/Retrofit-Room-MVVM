@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="news"
+            type="com.example.retrofittest.model.datamodel.News" />
+    </data>
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -21,7 +26,7 @@
             android:layout_height="250dp"
             tools:src="@drawable/news"
             android:scaleType="fitXY"
-            android:id="@+id/news_img"/>
+            loadImage="@{news.image!=null?news.image:``}"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,7 +35,7 @@
             android:textColor="@color/text_color"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:id="@+id/news_title"
+            android:text="@{news.title}"
             android:layout_marginTop="5dp"/>
         <TextView
             android:layout_width="match_parent"
@@ -39,7 +44,7 @@
             android:maxLines="2"
             android:ellipsize="end"
             android:textColor="@color/text_color"
-            android:id="@+id/news_description"
+            android:text="@{news.description}"
             android:layout_marginTop="5dp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -47,7 +52,7 @@
             android:textSize="14sp"
             android:textColor="@color/text_color"
             android:layout_marginTop="5dp"
-            android:id="@+id/news_date" />
+            android:text="@{news.published.replace(` +0000`,``)}"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
 </layout>

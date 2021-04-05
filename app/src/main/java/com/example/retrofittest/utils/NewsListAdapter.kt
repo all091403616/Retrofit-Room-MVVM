@@ -25,10 +25,7 @@ class NewsListAdapter(var newsList:ArrayList<News>?) :RecyclerView.Adapter<NewsL
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.binding.newsImg.loadImage(newsList?.get(position)?.image?:"")
-        holder.binding.newsTitle.text= newsList?.get(position)?.title
-        holder.binding.newsDescription.text= newsList?.get(position)?.description
-        holder.binding.newsDate.text= newsList?.get(position)?.published?.replace(" +0000","")
+        holder.binding.news=newsList?.get(position)
 
         holder.itemView.setOnClickListener {
             it.findNavController().navigate(ListFragmentDirections.actionListFragmentToDetailsFragment(newsList?.get(position)?.rowId!!))

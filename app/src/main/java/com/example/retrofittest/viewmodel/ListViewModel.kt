@@ -5,7 +5,6 @@ import com.example.retrofittest.model.datamodel.News
 import com.example.retrofittest.repository.NewsRepository
 import com.example.retrofittest.utils.CheckConnection
 import com.example.retrofittest.utils.States
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ListViewModel(private val connection: CheckConnection, private val repository:NewsRepository):ViewModel() {
@@ -32,14 +31,16 @@ class ListViewModel(private val connection: CheckConnection, private val reposit
                 try {
                     _state.value=States.LOADING
                     repository.getDataFromServer()
-                    _state.value=States.SUCCESS
+                    _state.value=States.NONLOADING
                 }catch (ex:Exception){
                     _message.value="Please try again later"
-                    _state.value=States.ERROR
+                    _state.value=States.NONLOADING
                 }
             }
-        else
-            _message.value="Check your internet connection"
+        else {
+            _state.value=States.NONLOADING
+            _message.value = "Check your internet connection"
+        }
     }
 
     fun searchNews(text:String){
