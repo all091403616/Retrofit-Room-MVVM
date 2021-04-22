@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             }else{
                 binding.drawerLayout.closeDrawers()
                 startActivity(Intent(Intent.ACTION_SEND).apply {
-                    putExtra(Intent.EXTRA_TEXT,"Simple app for Retrofit,Room and MVVM\nhttps://github.com/all091403616/Retrofit-Room-MVVM")
+                    putExtra(Intent.EXTRA_TEXT,"Simple app for Retrofit,Room and MVVM\nhttps://github.com/shojaeialireza/Retrofit-Room-MVVM")
                     type="text/plain"
                 })
             }
