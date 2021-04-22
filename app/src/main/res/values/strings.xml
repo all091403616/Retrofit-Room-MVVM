@@ -2,4 +2,5 @@
     <string name="app_name">Retrofit Test</string>
     <string name="author_text">Author: %s</string>
     <string name="date_text">PublishedAt: %s</string>
+    <string name="search_view_hint">Search…</string>
 </resources>

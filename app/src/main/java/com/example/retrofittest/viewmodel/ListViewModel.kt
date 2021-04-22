@@ -50,8 +50,6 @@ class ListViewModel(private val connection: CheckConnection, private val reposit
     fun messageReceived(){
         _message.value=null
     }
-
-    fun getSearchHint()="Search..."
 }
 
 class ListViewModelFactory(private val checkConnection: CheckConnection,private val repository: NewsRepository):ViewModelProvider.Factory {

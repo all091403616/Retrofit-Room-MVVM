@@ -71,7 +71,7 @@ class ListFragment:Fragment() , SearchView.OnQueryTextListener{
         inflater.inflate(R.menu.list_top_menu,menu)
         val searchView:SearchView=menu.findItem(R.id.search_menu).actionView as SearchView
         searchView.isSubmitButtonEnabled=false
-        searchView.queryHint=viewModel.getSearchHint()
+        searchView.queryHint=getString(R.string.search_view_hint)
         searchView.setOnQueryTextListener(this)
 
         super.onCreateOptionsMenu(menu, inflater)
